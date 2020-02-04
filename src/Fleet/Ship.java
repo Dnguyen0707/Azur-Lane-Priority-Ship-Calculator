@@ -1,12 +1,13 @@
 package Fleet;
-/**
- * A template to create ships object to use
- *
- * Every variables are unchangeable except for retrofit (required user input)
- */
-
 import java.util.Scanner;
 
+/**
+ * Ship class creates objects that will be used in others classes. Information
+ * will be taken from Ships.xlsx and processed through a Reader class.
+ *
+ * @author Dai Nguyen
+ * @version 1.0
+ */
 public class Ship
 {
     private String name;
@@ -15,28 +16,37 @@ public class Ship
     private String rarity;
     private String modifier;
     private int limitBreak;
+    private int oilCost;    //TODO: need to calculate the oil cost
 
     /**
-     * Constructor to make a Ship object
+     * Constructor to make a Ship object by taking in informations from the
+     * excel and store that information. Everything that is stored will be
+     * immutable except for rarity, which is changed depending on the
+     * information that retrofit contain. Limitbreak information will requires
+     * user input using Java's built-in Scanner.
      *
-     * @param name
-     * @param modifier
-     * @param rarity
-     * @param retrofit
-     * @param type
+     * @param name Ship name
+     * @param modifier Any modifier on ship
+     * @param rarity Rarity of the ship
+     * @param retrofit If the ship is retrofitable
+     * @param type Ship type
      */
     public Ship(String name, String type, String retrofit, String rarity, String modifier)
     {
         this.name = name;
         this.type = type;
         this.retrofit = isRetrofit(retrofit);
-        this.rarity = rarity;
+        this.rarity = rarityCheck(this.retrofit, rarity);
         this.modifier = modifier;
         this.limitBreak = limitBreak();
+        //TODO: add oil cost
     }
 
     /**
-     * Ask user if they retrofitted their ship then store that information
+     * Ask user if they retrofitted their ship then store that information.
+     *
+     * @param retrofit Information on if ships is retrofitable
+     * @return True or false depending on the condition
      */
     public boolean isRetrofit(String retrofit)
     {
@@ -48,8 +58,8 @@ public class Ship
             String input;
 
             //prevent user from putting other answer
-            boolean pass = false;
-            while (!pass)
+            boolean pass = true;
+            while (pass)
             {
                 input = sc.nextLine();
                 if (input.equalsIgnoreCase("yes"))
@@ -70,13 +80,64 @@ public class Ship
     }
 
     /**
-     * Ask user to see if they limit break
+     * Checking a ship rarity if retrofitted and change rarity accordingly.
+     *
+     * @param rarity The ship original rarity
+     * @param retrofitted If the user retrofitted the ship
+     * @return Either the same imported rarity or updated
+     */
+    public String rarityCheck(boolean retrofitted, String rarity)
+    {
+        String ret = "";
+        if (retrofitted)
+        {
+            switch (rarity)
+            {
+                case "Common":
+                {
+                    ret = "Rare";
+                    break;
+                }
+                case "Rare":
+                {
+                    ret = "Elite";
+                    break;
+                }
+                case "Elite":
+                {
+                    ret = "SSR";
+                    break;
+                }
+                case "SSR":
+                {
+                    ret = "something";  //TODO: look for the name
+                    break;
+                }
+                default:
+                {
+                    System.out.println("This program is bugged");
+                }
+            }
+        }
+        else
+        {
+            ret = rarity;
+        }
+        return ret;
+    }
+
+    /**
+     * Ask user to see if they limit break and store the information that will
+     * be used to calculate oil cost.
+     *
+     * @return The user input
      */
     public int limitBreak()
     {
         int output = 0;
         Scanner sc = new Scanner(System.in);
 
+        //TODO: might need to add in decisive ship
         if (rarity.equalsIgnoreCase("Priority"))
         {
             output = 6;
@@ -85,10 +146,10 @@ public class Ship
         System.out.println("What is the star level/limit break of your ship?");
         System.out.println("Please enter a number");
         int input;
-        boolean pass = false;
+        boolean pass = true;
 
         //preventing from user to enter other number
-        while (!pass)
+        while (pass)
         {
             input = sc.nextInt();
             switch (rarity)
@@ -132,44 +193,20 @@ public class Ship
         return output;
     }
 
+    /**
+     * Print out the ship information
+     *
+     * @return String of ship's information.
+     */
     @Override
     public String toString()
     {
         String name = "Name: " + this.name;
         String type = "Ship Type: " + this.type;
-        String rarity = this.rarity;
+        String rarity = "Rarity: " + this.rarity;
         String limitbreak = "Limit Break Level: " + this.limitBreak;
+        String oilcost = "Oil cost: " + this.oilCost;
 
-        if (retrofit)
-        {
-            switch (rarity)
-            {
-                case "Common":
-                {
-                    rarity = "Rarity: Rare";
-                    break;
-                }
-                case "Rare":
-                {
-                    rarity = "Rarity: Elite";
-                    break;
-                }
-                case "Elite":
-                {
-                    rarity = "Rarity: SSR";
-                    break;
-                }
-                default:
-                {
-                    rarity = "Rarity: " + this.rarity;
-                }
-            }
-        }
-        else
-        {
-            rarity = "Rarity: " + this.rarity;
-        }
-
-        return name + " | " + type + " | " + rarity + " | " + limitbreak;
+        return name + " | " + type + " | " + rarity + " | " + limitbreak + " | " + oilcost;
     }
 }
