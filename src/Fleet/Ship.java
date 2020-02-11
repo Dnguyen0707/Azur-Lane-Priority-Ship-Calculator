@@ -43,6 +43,14 @@ public class Ship
     }
 
     /**
+     * Only to quick store
+     */
+    public Ship(String name, String type, String retrofit, String rarity, String modifier, int number)
+    {
+
+    }
+
+    /**
      * Ask user if they retrofitted their ship then store that information.
      *
      * @param retrofit Information on if ships is retrofitable
