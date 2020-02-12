@@ -1,4 +1,3 @@
-import Fleet.*;
 /**
  * Tester driver to test the component of this program
  *
@@ -12,5 +11,7 @@ public class Test
 //        System.out.println(bismarck.toString());
 
         Reader.read("Iron Blood");
+        System.out.println(Fleet.quickstored.toString());
+
     }
 }
