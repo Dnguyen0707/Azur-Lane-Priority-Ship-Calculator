@@ -5,8 +5,7 @@ import java.util.HashMap;
  */
 public class Fleet
 {
-    //allows to be use in the package
-    public static HashMap<String, Ship> quickstored = new HashMap<>();
+    public static HashMap<String, Ship> stored = new HashMap<>();
 
 
 }

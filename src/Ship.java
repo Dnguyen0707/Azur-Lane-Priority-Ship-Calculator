@@ -109,7 +109,7 @@ public class Ship
                 }
                 case "SSR":
                 {
-                    ret = "something";  //TODO: look for the name
+                    ret = "Priority";  //TODO: check if it's right
                     break;
                 }
                 default:
@@ -136,8 +136,7 @@ public class Ship
         int output = 0;
         Scanner sc = new Scanner(System.in);
 
-        //TODO: might need to add in decisive ship
-        if (rarity.equalsIgnoreCase("Priority"))
+        if (this.rarity.equalsIgnoreCase("Priority") || this.rarity.equalsIgnoreCase("Decisive"))
         {
             output = 6;
         }
@@ -145,13 +144,13 @@ public class Ship
         System.out.println("What is the star level/limit break of your ship?");
         System.out.println("Please enter a number");
         int input;
-        boolean pass = true;
+        boolean pass = false;
 
         //preventing from user to enter other number
-        while (pass)
+        while (!pass)
         {
             input = sc.nextInt();
-            switch (rarity)
+            switch (this.rarity)
             {
                 case "Common":
                 {
@@ -186,7 +185,10 @@ public class Ship
                     System.out.println("This program is bugged");
                 }
             }
-            System.out.println("Please enter a correct number");
+            if (!pass)
+            {
+                System.out.println("Please enter a correct number");
+            }
         }
 
         return output;
