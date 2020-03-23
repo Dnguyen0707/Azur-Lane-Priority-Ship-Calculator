@@ -5,6 +5,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.stream.Collectors;
@@ -143,7 +145,12 @@ public class Reader
             String rarity = splited[3];
             String modifier = splited[4];
 
-            Ship ship = new Ship(name, type, retrofit, rarity, modifier);
+            System.out.println(modifier);
+            String[] changeModifier = modifier.split(".");
+            String changed = changeModifier[0]; //TODO fix this problem
+
+
+            Ship ship = new Ship(name, type, retrofit, rarity, changed);
 
             //separating the main and vanguard
             String key = "";
@@ -160,7 +167,7 @@ public class Reader
                 case "BB":
                 case "CV":
                 {
-                    key = "Main";
+                    key = "Main";   //TODO: add in count here so key are different
                     break;
                 }
 

@@ -29,8 +29,9 @@ public class Ship
      * @param rarity Rarity of the ship
      * @param retrofit If the ship is retrofitable
      * @param type Ship type
+     * @param modifier Oil modification
      */
-    public Ship(String name, String type, String retrofit, String rarity, String modifier)
+    public Ship(String name, String type, String retrofit, String rarity, String modifier)  //add in oil cost for the variable
     {
         this.name = name;
         this.type = type;
@@ -38,7 +39,8 @@ public class Ship
         this.rarity = rarityCheck(this.retrofit, rarity);
         this.modifier = modifier;
         this.limitBreak = limitBreak();
-        //TODO: add oil cost
+        this.oilCost = ShipCalculation.oilCalculator(type, rarity, modifier, this.limitBreak);
+
     }
 
     /**

@@ -10,8 +10,8 @@ public class Test
 //        Ship bismarck = new Ship("Bismarck", "BB", "yes", "Common", "0");
 //        System.out.println(bismarck.toString());
 
-        Reader.read("Iron Blood", "asd");
-        System.out.println(Fleet.stored.toString());
+        Reader.read("Iron Blood", "Z23");
+        System.out.println(Fleet.stored);
 
     }
 }
