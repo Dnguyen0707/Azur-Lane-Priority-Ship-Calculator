@@ -97,6 +97,7 @@ public class ShipCalculation
             }
         }
         //TODO: remember to time 2 for every limit break, max up to 6, total of 3 limit break allowed.
+        //TODO: retrofit does not change limit break
         if (rarity.equalsIgnoreCase("Priority") || rarity.equalsIgnoreCase("Decisive"))
         {
             maxCostLimit = 6;
@@ -133,7 +134,6 @@ public class ShipCalculation
         int mod = Integer.parseInt(modifier);
 
         int output = maxCostHull + maxCostLimit + maxCostRarity + mod;
-        //TODO: do the math here
         return output;
     }
 }

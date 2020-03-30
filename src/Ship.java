@@ -36,7 +36,7 @@ public class Ship
         this.name = name;
         this.type = type;
         this.retrofit = isRetrofit(retrofit);
-        this.rarity = rarityCheck(this.retrofit, rarity);
+        this.rarity = rarity;
         this.modifier = modifier;
         this.limitBreak = limitBreak();
         this.oilCost = ShipCalculation.oilCalculator(type, rarity, modifier, this.limitBreak);
@@ -80,52 +80,6 @@ public class Ship
         return false;
     }
 
-    /**
-     * Checking a ship rarity if retrofitted and change rarity accordingly.
-     *
-     * @param rarity The ship original rarity
-     * @param retrofitted If the user retrofitted the ship
-     * @return Either the same imported rarity or updated
-     */
-    public String rarityCheck(boolean retrofitted, String rarity)
-    {
-        String ret = "";
-        if (retrofitted)
-        {
-            switch (rarity)
-            {
-                case "Common":
-                {
-                    ret = "Rare";
-                    break;
-                }
-                case "Rare":
-                {
-                    ret = "Elite";
-                    break;
-                }
-                case "Elite":
-                {
-                    ret = "SSR";
-                    break;
-                }
-                case "SSR":
-                {
-                    ret = "Priority";  //TODO: check if it's right
-                    break;
-                }
-                default:
-                {
-                    System.out.println("This program is bugged");
-                }
-            }
-        }
-        else
-        {
-            ret = rarity;
-        }
-        return ret;
-    }
 
     /**
      * Ask user to see if they limit break and store the information that will

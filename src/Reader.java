@@ -145,10 +145,9 @@ public class Reader
             String rarity = splited[3];
             String modifier = splited[4];
 
-            System.out.println(modifier);
-            String[] changeModifier = modifier.split(".");
-            String changed = changeModifier[0]; //TODO fix this problem
-
+            double change = Double.parseDouble(modifier);
+            DecimalFormat format = new DecimalFormat("0.#");
+            String changed = format.format(change);
 
             Ship ship = new Ship(name, type, retrofit, rarity, changed);
 
