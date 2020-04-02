@@ -15,7 +15,7 @@ public class Ship
     private String rarity;
     private String modifier;
     private int limitBreak;
-    private int oilCost;    //TODO: need to calculate the oil cost
+    private int oilCost;
 
     /**
      * Constructor to make a Ship object by taking in informations from the
@@ -99,20 +99,33 @@ public class Ship
 
         System.out.println("What is the star level/limit break of your ship?");
         System.out.println("Please enter a number");
-        int input;
+        String input;
         boolean pass = false;
 
         //preventing from user to enter other number
         while (!pass)
         {
-            input = sc.nextInt();
+            input = sc.next();
+
+            boolean check = lbcheck(input);
+
+            while (!check)
+            {
+                System.out.println("Please enter a number");
+                input = sc.next();
+                check = lbcheck(input);
+            }
+
+            int passInput = Integer.parseInt(input);
+
+            //checking correct number input
             switch (this.rarity)
             {
                 case "Common":
                 {
-                    if (input >= 1 && input <= 4)
+                    if (passInput >= 1 && passInput <= 4)
                     {
-                        output = input;
+                        output = passInput;
                         pass = true;
                     }
                     break;
@@ -120,18 +133,18 @@ public class Ship
                 case "Rare":
                 case "Elite":
                 {
-                    if (input >= 2 && input <= 5)
+                    if (passInput >= 2 && passInput <= 5)
                     {
-                        output = input;
+                        output = passInput;
                         pass = true;
                     }
                     break;
                 }
                 case "SSR":
                 {
-                    if (input >= 3 && input <= 6)
+                    if (passInput >= 3 && passInput <= 6)
                     {
-                        output = input;
+                        output = passInput;
                         pass = true;
                     }
                     break;
@@ -150,6 +163,54 @@ public class Ship
         return output;
     }
 
+    private boolean lbcheck(String input)
+    {
+        try
+        {
+            int check = Integer.parseInt(input);
+            return true;
+        }
+        catch (NumberFormatException e)
+        {
+            return false;
+        }
+    }
+
+    private String changeRarity(String rarity)
+    {
+        String change = null;
+
+        switch (rarity)
+        {
+            case "Common":
+            {
+                change = "Rare";
+                break;
+            }
+            case "Rare":
+            {
+                change = "Elite";
+                break;
+            }
+            case "Elite":
+            {
+                change = "SSR";
+                break;
+            }
+            case "SSR":
+            {
+                change = "Ultra Rare";
+                break;
+            }
+            default:
+            {
+                System.out.println("Fucked");
+            }
+        }
+        return change;
+    }
+
+
     /**
      * Print out the ship information
      *
@@ -160,7 +221,17 @@ public class Ship
     {
         String name = "Name: " + this.name;
         String type = "Ship Type: " + this.type;
-        String rarity = "Rarity: " + this.rarity;
+        String rarity;
+
+        if (retrofit)
+        {
+            rarity = "Rarity: " + changeRarity(this.rarity);
+        }
+        else
+        {
+            rarity = "Rarity: " + this.rarity;
+        }
+
         String limitbreak = "Limit Break Level: " + this.limitBreak;
         String oilcost = "Oil cost: " + this.oilCost;
 

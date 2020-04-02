@@ -27,6 +27,9 @@ import java.util.stream.Collectors;
  */
 public class Reader
 {
+    public static int vanguardNum = 1;
+    public static int mainNum = 1;
+
     /**
      * Store the information required from the excel
      *
@@ -158,14 +161,14 @@ public class Reader
                 case "CL":
                 case "DD":
                 {
-                    key = "Vanguard";
+                    key = "Vanguard " + vanguardNum++;
                     break;
                 }
 
                 case "BB":
                 case "CV":
                 {
-                    key = "Main";   //TODO: add in count here so key are different
+                    key = "Main " + mainNum++;
                     break;
                 }
 

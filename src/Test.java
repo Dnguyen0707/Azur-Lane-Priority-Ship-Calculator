@@ -11,7 +11,13 @@ public class Test
 //        System.out.println(bismarck.toString());
 
         Reader.read("Iron Blood", "Z23");
-        System.out.println(Fleet.stored);
+
+        Reader.read("Iron Blood", "Bismarck");
+
+        Reader.read("Iron Blood", "Graf Zeppelin");
+
+        System.out.println("---------------------------");
+        System.out.println(Fleet.print());
 
     }
 }
