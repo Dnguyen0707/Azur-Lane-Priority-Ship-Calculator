@@ -78,7 +78,7 @@ public class Reader
                     break;
                 }
                 default:
-                    System.out.println("This program is bugged");
+                    System.out.println("Bugged at read");
             }
 
             //checking if there is a sheet or not
@@ -111,7 +111,7 @@ public class Reader
                         }
                         default:
                         {
-                            System.out.println("fucked");
+                            System.out.println("Bugged at iterator");
                         }
                     }
                 }
@@ -174,7 +174,7 @@ public class Reader
 
                 default:
                 {
-                    System.out.println("Bugged");
+                    System.out.println("Bugged at store");
                 }
             }
             Fleet.stored.put(key, ship);

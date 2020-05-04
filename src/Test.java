@@ -12,9 +12,9 @@ public class Test
 
         Reader.read("Iron Blood", "Z23");
 
-        Reader.read("Iron Blood", "Bismarck");
+        Reader.read("Iron Blood", "Prinz Eugen");
 
-        Reader.read("Iron Blood", "Graf Zeppelin");
+        Reader.read("Iron Blood", "Roon");
 
         System.out.println("---------------------------");
         System.out.println(Fleet.print());

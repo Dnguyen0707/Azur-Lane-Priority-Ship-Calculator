@@ -52,7 +52,7 @@ public class ShipCalculation
             }
             default:
             {
-                System.out.println("fucked");
+                System.out.println("bugged at oil calculator");
             }
 
         }
@@ -92,7 +92,7 @@ public class ShipCalculation
                 }
                 default:
                 {
-                    System.out.println("Fucked");
+                    System.out.println("Bugged at ");
                 }
             }
         }

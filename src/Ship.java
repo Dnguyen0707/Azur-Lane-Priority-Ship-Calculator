@@ -151,7 +151,7 @@ public class Ship
                 }
                 default:
                 {
-                    System.out.println("This program is bugged");
+                    System.out.println("Bugged at limit break");
                 }
             }
             if (!pass)
@@ -204,7 +204,7 @@ public class Ship
             }
             default:
             {
-                System.out.println("Fucked");
+                System.out.println("Bugged at change Rarity");
             }
         }
         return change;

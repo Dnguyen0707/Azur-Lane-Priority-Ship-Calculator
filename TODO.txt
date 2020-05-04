@@ -1,0 +1,2 @@
+Can't call the same ship twice
+Can't have the same ship that is being asked to check for
