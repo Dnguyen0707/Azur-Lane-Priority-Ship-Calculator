@@ -1,2 +1,4 @@
 Can't call the same ship twice
 Can't have the same ship that is being asked to check for
+
+add new class called "Calculation" that calculate oil required and run required (depending on each map level)

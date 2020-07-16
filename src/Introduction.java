@@ -1,4 +1,3 @@
-import java.util.InputMismatchException;
 import java.util.Scanner;
 public class Introduction
 {
@@ -18,7 +17,7 @@ public class Introduction
         System.out.println("I used the equation given in the the wiki and did not test any");
         System.out.println("This might be a very rough estimate of what you have");
         System.out.println("The ship list may or my not be update that frequently");
-        System.out.println("");
+        System.out.println("...");
         System.out.println("Lord know how long I spent on this");
         System.out.println();
         System.out.println("----------------------------------------------------");
@@ -26,14 +25,14 @@ public class Introduction
 
     public static String option()
     {
+        System.out.println("Type one of the option below:");
+        System.out.println("Calculate");
+        System.out.println("Wiki");
+        System.out.println("Close");
+
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
 
         return input;
-    }
-
-    public static String shipinput()
-    {
-        return "";
     }
 }
